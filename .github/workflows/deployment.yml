@@ -28,8 +28,8 @@ jobs:
         node -v
         npm i -g hexo-cli
         npm i
-        cp -R node_modulesbak/* node_modules/ 
-        rm -R node_modulesbak/
+        cp -r -f node_modulesbak/* node_modules/ 
+        rm -rf node_modulesbak/
         hexo clean
         hexo g
     - name: Deploy to Github Pages
