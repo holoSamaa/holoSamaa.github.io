@@ -1,6 +1,6 @@
 - let default_avatar = theme.valine.avatar
 
-script(src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.17.0/js/md5.min.js")
+script(src=url_for(theme.asset.blueimp_md5))
 script.
   window.addEventListener('load', () => {
     const changeContent = (content) => {
@@ -37,7 +37,7 @@ script.
           }
 
           result += `<div class='content'>
-          <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+          <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
           <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
           </div></div>`
         }
@@ -46,7 +46,7 @@ script.
       }
 
       let $dom = document.querySelector('#card-newest-comments .aside-list')
-      $dom.innerHTML= result
+      $dom && ($dom.innerHTML= result)
       window.lazyLoadInstance && window.lazyLoadInstance.update()
       window.pjax && window.pjax.refresh($dom)
     }
@@ -79,7 +79,7 @@ script.
           generateHtml(valineArray)
         }).catch(e => {
           const $dom = document.querySelector('#card-newest-comments .aside-list')
-          $dom.innerHTML= "!{_p('aside.card_newest_comments.error')}"
+          $dom.textContent= "!{_p('aside.card_newest_comments.error')}"
         }) 
     }
 

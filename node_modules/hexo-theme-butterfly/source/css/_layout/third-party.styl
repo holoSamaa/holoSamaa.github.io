@@ -1,5 +1,4 @@
-#vcomment,
-#waline
+#vcomment
   font-size: 1.1em
 
   .vbtn
@@ -20,6 +19,14 @@
     &:before,
     &:after
       z-index: 22
+
+#waline-wrap
+  --waline-font-size: 1.1em
+  --waline-theme-color: $button-bg
+  --waline-active-color: $button-hover-color
+
+  .wl-comment-actions > button:not(last-child)
+    padding-right: 4px
 
 if hexo-config('valine.bg')
   #vcomment
@@ -51,16 +58,12 @@ if hexo-config('waline.bg')
 .medium-zoom-overlay
   z-index: 99999 !important
 
-.mermaid
-  overflow: auto
-  margin: 0 0 1rem
-  background: $white
+.mermaid-wrap
+  margin: 0 0 20px
   text-align: center
-  opacity: 0
-  transition: all .3s
 
-  &[data-processed]
-    opacity: 1
+  & > svg
+    height: 100%
 
 .utterances,
 .fb-comments iframe
@@ -69,7 +72,7 @@ if hexo-config('waline.bg')
 #gitalk-container
   .gt-meta
     margin: 0 0 .8em
-    padding: .3rem 0 .8em
+    padding: 6px 0 16px
 
 .katex-wrap
   overflow: auto
@@ -78,22 +81,30 @@ if hexo-config('waline.bg')
     &::-webkit-scrollbar
       display: none
 
-// mathjax
-.mathjax-overflow
+// Mathjax
+mjx-container
   overflow-x: auto
   overflow-y: hidden
+  padding-bottom: 4px
+  max-width: 100%
 
-mjx-container[jax='CHTML'][display='true']
-  overflow-x: auto
-  overflow-y: hidden
-  padding-bottom: .3rem
+  &[display]
+    display: block !important
+    min-width: auto !important
+
+  &:not([display])
+    display: inline-grid !important
+
+mjx-assistive-mml
+  right: 0
+  bottom: 0
 
 .aplayer
   color: $font-black
 
 #article-container
   .aplayer
-    margin: 0 0 1rem
+    margin: 0 0 20px
 
     if hexo-config('beautify.enable')
       ol,
@@ -107,3 +118,18 @@ mjx-container[jax='CHTML'][display='true']
 
           &:before
             content: none
+
+.snackbar-css
+  border-radius: 5px !important
+
+.abc-music-sheet
+  margin: 0 0 20px
+  opacity: 0
+  transition: opacity .3s
+
+  &.abcjs-container
+    opacity: 1
+
++maxWidth768()
+  .fancybox__toolbar__column.is-middle
+    display: none

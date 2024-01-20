@@ -17,7 +17,10 @@ script.
     const findTrueUrl = (array) => {
       Promise.all(array.map(item =>
         fetch(item.url).then(resp => resp.json()).then(data => {
-          const urlArray = data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig)
+          let urlArray = data.body ? data.body.match(/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/ig) : []
+          if (!Array.isArray(urlArray) || urlArray.length === 0) {
+            urlArray = [`${data.html_url}`]
+          }
           if (data.user.login === 'utterances-bot') {
             return urlArray.pop()
           } else {
@@ -38,7 +41,7 @@ script.
     }
 
     const getComment = () => {
-      fetch('https://api.github.com/repos/!{theme.newest_comments.github_issues.repo}/issues/comments?sort=updated&direction=desc&per_page=!{theme.newest_comments.limit}&page=1',{
+      fetch('https://api.github.com/repos/!{userRepo}/issues/comments?sort=updated&direction=desc&per_page=!{theme.newest_comments.limit}&page=1',{
         "headers": {
           Accept: 'application/vnd.github.v3.html+json'
         }
@@ -48,7 +51,7 @@ script.
           const githubArray = data.map(item => {
             return {
               'avatar': item.user.avatar_url,
-              'content': changeContent(item.body_html),
+              'content': changeContent(item.body_html || item.body),
               'nick': item.user.login,
               'url': item.issue_url,
               'date': item.updated_at,
@@ -58,7 +61,7 @@ script.
           findTrueUrl(githubArray)
         }).catch(e => {
           const $dom = document.querySelector('#card-newest-comments .aside-list')
-          $dom.innerHTML= "!{_p('aside.card_newest_comments.error')}"
+          $dom.textContent= "!{_p('aside.card_newest_comments.error')}"
         })
     }
 
@@ -75,7 +78,7 @@ script.
           }
 
           result += `<div class='content'>
-          <a class='comment' href='${array[i].url}'>${array[i].content}</a>
+          <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
           <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
           </div></div>`
         }
@@ -84,7 +87,7 @@ script.
       }
 
       let $dom = document.querySelector('#card-newest-comments .aside-list')
-      $dom.innerHTML= result
+      $dom && ($dom.innerHTML= result)
       window.lazyLoadInstance && window.lazyLoadInstance.update()
       window.pjax && window.pjax.refresh($dom)
     }
@@ -103,3 +106,7 @@ script.
     newestCommentInit()
     document.addEventListener('pjax:complete', newestCommentInit)
   })
+
+
+
+
