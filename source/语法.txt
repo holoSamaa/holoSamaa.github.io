@@ -1,0 +1,49 @@
+{% gallery %}
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-1.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-2.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-3.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-4.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-5.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-6.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-7.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-8.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-9.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-10.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-11.jpg)
+![](https://haiyong.site/bizhi/maomaotupianku/img/maomao-12.jpg)
+{% endgallery %}
+
+<div class="gallery-group-main">
+{% galleryGroup '水果忍者' 'HTML5版水果忍者游戏，一代人的回忆' 'https://wanghao221.github.io/shuiguorenzhe/' https://haiyong.site/img/img-blog.csdnimg.cn/597e2faaf824460fb37994a599e62181.png %}
+{% galleryGroup '捕鱼达人' 'HTML5版捕鱼达人，一代人的回忆' 'https://wanghao221.github.io/buyudaren/' https://haiyong.site/img/img-blog.csdnimg.cn/b2df78e1762141389fbd44a4832c7295.png %}
+{% galleryGroup '第三人称射击游戏' '你有十条命，杀死所有的敌人' 'https://haiyong.site/moyu/SpaceHuggers/' https://haiyong.site/img/img-blog.csdnimg.cn/b9accc6538e048688c6f28da31337587.png %}
+{% galleryGroup '过马路小游戏' 'three实现三维路上过马路避让汽车游戏代码(键盘的上下左右键也可以哦)' 'https://haiyong.site/moyu/guomalu.html' https://haiyong.site/img/img-blog.csdnimg.cn/47b18439c18542baae9a1a993127a6ca.png %}
+{% galleryGroup '2048' 'by the 原 2048 的灵感' 'https://haiyong.site/moyu/2048.html' https://haiyong.site/img/img-blog.csdnimg.cn/099a9303476a468c8997b9d0163e8bcf.png %}
+{% galleryGroup '五子棋' '尝试一下和人工智能下五子棋' 'https://haiyong.site/moyu/wuziqi.html' https://haiyong.site/img/img-blog.csdnimg.cn/df51977576604dd0bcac1f7ef2f5f9a0.png %}
+</div>
+
+
+
+金木水火土哪个腿最长？ {% hideInline 火腿长(因为火腿肠),查看答案,#FF7242,#fff %}
+
+门里站着一个人? {% hideInline 闪 %}
+
+
+
+查看答案
+{% hideBlock 查看答案 %}
+傻子，怎么可能有答案
+{% endhideBlock %}
+
+{% hideToggle Butterfly安装方法 %}
+在你的博客根目录里
+
+git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly
+
+如果想要安装比较新的dev分支，可以
+
+git clone -b dev https://github.com/jerryc127/hexo-theme-butterfly.git themes/Butterfly
+
+{% endhideToggle %}
+
+
