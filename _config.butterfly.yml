@@ -864,7 +864,7 @@ inject:
   bottom:
      - <script src="/js/routeTitle.js"></script>
      - <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-     - <script type="text/javascript" src="/js/rightmenu.js"></script>
+     - <script src="/js/rightmenu.js"></script>
 
 # CDN
 # Don't modify the following settings unless you know how they work

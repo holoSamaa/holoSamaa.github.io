@@ -24,9 +24,11 @@ jobs:
 
     - name: Install dependencies & Generate static files
       run: |
+        mv node_modules node_modulesbak
         node -v
         npm i -g hexo-cli
         npm i
+        mv -f node_modulesbak/* node_modules/
         hexo clean
         hexo g
     - name: Deploy to Github Pages
