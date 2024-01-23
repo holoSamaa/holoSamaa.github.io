@@ -120,3 +120,24 @@ abbrlink:
   auto_title: false #enable auto title, it can auto fill the title by path
   auto_date: false #enable auto date, it can auto fill the date by time today
   force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
+uglify:
+    mangle: true
+    output:
+    compress:
+    exclude:
+        - "*.min.js"
+
+clean_css:
+    exclude:
+        - "*.min.css"
+
+html_minifier:
+    collapseBooleanAttributes: true
+    collapseWhitespace: true
+    ignoreCustomComments: [!!js/regexp /^\s*more/]
+    removeComments: true
+    removeEmptyAttributes: true
+    removeScriptTypeAttributes: true
+    removeStyleLinkTypeAttributes: true
+    minifyJS: true
+    minifyCSS: true
